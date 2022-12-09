@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" href="favicon.ico">
+    <title>保温杯的小破站</title>
+    <style>body { margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; font-family: "Helvetica Neue", "PingFang SC", "Source Han Sans", "Microsoft YaHei UI", "Microsoft YaHei", Arial, sans-serif; }p { margin-bottom: 16px; overflow-wrap: break-word; }a { color: rgb(33, 108, 211); text-decoration-line: none; border-bottom-color: initial; border-bottom-style: dashed; border-bottom-width: 1px; }hr { margin-top: 30px; margin-right: auto; margin-bottom: 30px; margin-left: auto; }</style>
+    <style>
+
+        .text{
+            font-family: 'fangsong';
+            display: inline-block;
+            position: relative;
+            font-size: 40px;
+            height: 60px;
+            line-height: 60px;
+            color: rgb(41, 41, 41);
+        }
+        .text::after{
+            content: '';
+            position: absolute;
+            right: -10px;
+            top: 5px;
+            height: 50px;
+            width: 3px;
+            background-color: #fff;
+            animation: san 0.5s steps(1) infinite;
+        }
+        @keyframes san{
+            0%,100%{
+                background-color: #fff;
+            }
+            50%{
+                background-color: transparent;
+            }
+
+        }
+    </style>
+</head>
+<body>
+    <div style="background-color: rgb(241, 241, 241); text-align: center; padding-top: 40px; padding-right: 40px; padding-bottom: 40px; padding-left: 40px;">
+        <img alt="保温杯QwQ" src="https://i.328888.xyz/2022/12/08/fgykv.jpeg" width="80px" height="80px">
+        <h1>保温杯吖</h1>
+    </div>
+    <article style="max-width: 700px; margin-top: 30px; margin-right: auto; margin-bottom: 30px; margin-left: auto; padding-top: 15px; padding-right: 15px; padding-bottom: 15px; padding-left: 15px; color: rgb(36, 41, 46); font-size: 17px; line-height: 1.7;">
+        <h1>
+            <span class="text" ></span>
+            <p>About me：</p>
+            <p>Hello！我是保温杯，你也可以叫我小温😃</p>
+            <p>我是一个00后学牲党</p>
+            <p>拖延症晚期，懒癌晚期😶</p>
+            <p>一只野生程序员</p>
+            <p>热爱编程和DIY，乐于钻研和计算机相关的一切🐱‍💻</p>
+            <p>无聊的时候会也会去听听歌，没事写点东西👀</p>
+            <p>Find me：</p>
+            <p>网易云：<a href="https://music.163.com/#/user/home?id=1512535797">康康我的歌单</a></p>
+            <p>我的邮箱：<a href="mailto:wen@1357.ga">wen@1357.ga</a></p>
+            <p>我的博客：维护中⚙</p>
+        </h1>
+    </article>
+    <footer style="margin-top: 60px; background-color: rgb(241, 241, 241); text-align: center; padding-top: 40px; padding-right: 40px; padding-bottom: 40px; padding-left: 40px; font-size: 12px;">
+        <p style="color: rgb(102, 102, 102);">Programed by 保温杯</p>
+        <!-- 请注意，以下的示例包含超链接，您可能需要手动配置样式使其不变色。如果您嫌麻烦，可以移除。 -->
+        <p id="hitokoto"><span id="hitokoto_text">:D 获取中...</span></p>
+    </footer>
+    <script>
+    fetch('https://v1.hitokoto.cn/?c=d ')
+        .then(response => response.json())
+        .then(data => {
+            const hitokoto = document.getElementById('hitokoto_text')
+            hitokoto.href = 'https://hitokoto.cn/?uuid=' + data.uuid
+            hitokoto.innerText = data.hitokoto
+        })
+        .catch(console.error)
+    </script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            window.addEventListener("load", function () {
+            navigator.serviceWorker.register("sw.js");
+        });
+        }
+    </script>
+
+    <script>
+        const text = document.querySelector('.text');
+        const txt  =["嗨~ヾ(•ω•`)o","欢迎来到我的小站"];
+        var index=0;
+        var xiaBiao= 0;
+        var huan = true;
+        setInterval(function(){
+            if(huan){
+                text.innerHTML = txt[xiaBiao].slice(0,++index);
+                console.log(index);
+            }
+            else{
+                text.innerHTML = txt[xiaBiao].slice(0,index--);
+                console.log(index);
+            }
+
+            if(index==txt[xiaBiao].length+3)
+            {
+                huan = false;
+            }
+            else if(index<0)
+            {
+                index = 0;
+                huan = true;
+                xiaBiao++;
+                if(xiaBiao>=txt.length)
+                {
+                    xiaBiao=0;
+                }
+            }
+
+        },200)
+
+    </script>
+</body>
+</html>
